@@ -1,0 +1,34 @@
+JOB LoadData condor_load_data.sub
+VARS LoadData DAGid="$(DAGManJobId)" JOBid="LoadData"
+
+JOB Clustering1 condor_clusterN.sub
+VARS Clustering1 DAGid="$(DAGManJobId)" JOBid="Clustering1"
+JOB Clustering2 condor_clusterN.sub
+VARS Clustering2 DAGid="$(DAGManJobId)" JOBid="Clustering2"
+JOB Clustering3 condor_clusterN.sub
+VARS Clustering3 DAGid="$(DAGManJobId)" JOBid="Clustering3"
+JOB Clustering4 condor_clusterN.sub
+VARS Clustering4 DAGid="$(DAGManJobId)" JOBid="Clustering4"
+JOB Clustering5 condor_clusterN.sub
+VARS Clustering5 DAGid="$(DAGManJobId)" JOBid="Clustering5"
+JOB Clustering6 condor_clusterN.sub
+VARS Clustering6 DAGid="$(DAGManJobId)" JOBid="Clustering6"
+JOB Clustering7 condor_clusterN.sub
+VARS Clustering7 DAGid="$(DAGManJobId)" JOBid="Clustering7"
+JOB Clustering8 condor_clusterN.sub
+VARS Clustering8 DAGid="$(DAGManJobId)" JOBid="Clustering8"
+JOB Clustering9 condor_clusterN.sub
+VARS Clustering9 DAGid="$(DAGManJobId)" JOBid="Clustering9"
+JOB Clustering10 condor_clusterN.sub
+VARS Clustering10 DAGid="$(DAGManJobId)" JOBid="Clustering10"
+
+
+JOB Visualization condor_visualization.sub
+VARS Visualization DAGid="$(DAGManJobId)" JOBid="Visualization"
+JOB EmailResult condor_email_result.sub
+VARS EmailResult DAGid="$(DAGManJobId)" JOBid="EmailResult"
+
+# Define dependencies
+PARENT LoadData CHILD Clustering1 Clustering2 Clustering3 Clustering4 Clustering5 Clustering6 Clustering7 Clustering8 Clustering9 Clustering10 
+PARENT Clustering1 Clustering2 Clustering3 Clustering4 Clustering5 Clustering6 Clustering7 Clustering8 Clustering9 Clustering10 CHILD Visualization
+PARENT Visualization CHILD EmailResult

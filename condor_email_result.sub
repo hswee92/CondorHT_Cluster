@@ -1,0 +1,16 @@
+# 
+
+executable              = condor_email_result.sh
+log                     = condor_email_result.log
+output                  = condor_email_result.out
+error                   = condor_email_result.err
+arguments		= $(DAGid) $(JOBid) 
+
+should_transfer_files   = Yes
+when_to_transfer_output = ON_EXIT
+
+request_cpus            = 1
+request_memory          = 1G
+request_disk            = 1G
+
+queue

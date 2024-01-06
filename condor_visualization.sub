@@ -1,0 +1,16 @@
+# 
+
+executable              = condor_visualization.sh
+log                     = condor_visualization.log
+output                  = condor_visualization.out
+error                   = condor_visualization.err
+arguments		= $(DAGid) $(JOBid) 
+
+should_transfer_files   = Yes
+when_to_transfer_output = ON_EXIT
+
+request_cpus            = 1
+request_memory          = 1G
+request_disk            = 1G
+
+queue

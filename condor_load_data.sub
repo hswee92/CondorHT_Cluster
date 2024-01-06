@@ -1,0 +1,16 @@
+# 
+
+executable              = condor_load_data.sh
+log                     = condor_load_data.log
+output                  = condor_load_data.out
+error                   = condor_load_data.err
+arguments		= $(DAGid) $(JOBid) 
+
+should_transfer_files   = Yes
+when_to_transfer_output = ON_EXIT
+
+request_cpus            = 1
+request_memory          = 1G
+request_disk            = 1G
+
+queue
